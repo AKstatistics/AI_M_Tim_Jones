@@ -1,5 +1,4 @@
 #include "./graph_api/Graph.h"
-#include "./stack_api/Stack.h"
 #include <iostream>
 
 using std::cout;
@@ -22,8 +21,6 @@ int main()
 	tree( F, H ) = 1;
 
 	dfs( tree, A, C );
-
-	tree.~Graph();
 
 	return 0;
 }

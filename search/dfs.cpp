@@ -8,9 +8,7 @@ void dfs( Graph g, int root, int goal )
 	int to;
 	int i = 0;
 
-	Stack search;
-
-	search.addNode( root );
+	Stack search( root );
 
 	while( !search.isEmpty() )
 	{
