@@ -14,11 +14,11 @@ class Stack
 		Stack( const unsigned int first );
 		
 		// Adds a node if it is not already on either list
-		void 			addNode( const unsigned int );
+		bool addNode( const unsigned int );
 
 		// Last in first out, returns the node from stack 
 		// and moves it to done
-		const unsigned int 	lifo();
+		const unsigned int lifo();
 
 		// Prints the contents of the stack
 		void displayStack();
