@@ -34,7 +34,7 @@ void dls( Graph &g, int root, int goal, int limit )
 		depth = searchDepth[searchDepth.size() - 1];	// Now save the depth of the current node
 		searchDepth.pop_back();				// and remove that from the depth list.
 		
-		std::cout << i << ": " << node << std::endl;
+		std::cout << i << ". Node: " << node << "  Depth: " << depth << std::endl;
 
 		if( node == goal ) break;	// If we found our goal, quit.
 		if( depth < limit )		// If we havent gone deeper than our limit...

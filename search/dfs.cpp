@@ -9,7 +9,7 @@ void dfs( Graph &g, int root, int goal )
 {
 	int node, to;
 	int depth = 0;
-	int i = 0;
+	int i = 1;
 
 	Stack search( root );		// Stores the queue of 
 	std::vector<int> searchDepth;	// Stores the depth of the queued node.
@@ -34,7 +34,7 @@ void dfs( Graph &g, int root, int goal )
 		depth = searchDepth[searchDepth.size() - 1];	// Now save the depth of the current node
 		searchDepth.pop_back();				// and remove that from the depth list.
 		
-		std::cout << i << ": " << node << std::endl;
+		std::cout << i << ". Node: " << node << "  Depth: " << depth << std::endl;
 
 		if( node == goal ) break;	// If we found our goal, quit.
 		for( to = g.nodes()-1; to >=0; to-- )	// For each node in the graph
