@@ -12,9 +12,12 @@ Stack::Stack( const unsigned int first )
 	mStack.push_back( first );
 }
 
-void Stack::addNode( const unsigned int node )
+// This function adds a node to the stack if it has not already been queued once.
+// The function returns TRUE if the node was successfully added.
+bool Stack::addNode( const unsigned int node )
 {
-	bool duplicate = 0;
+	bool duplicate = 0;	// This bool will be set to TRUE if the node has already been queued.
+				// The opposite of this bool is TRUE when the node has successfully been added to the queue.
 
 	for( vector<int>::size_type i = 0; i < mStack.size(); i++ )
 	{
@@ -23,17 +26,19 @@ void Stack::addNode( const unsigned int node )
 	}
 
 	if( duplicate == 1 )
-		return;
-	for( vector<int>::size_type i = 0; i < mDone.size(); i++ )
+		return !duplicate;
+	for( vector<int>::size_type i = 0; i < mHistory.size(); i++ )
 	{
-		if( mDone[i] == node )
+		if( mHistory[i] == node )
 		{ duplicate = 1; break; }
 	}
 
 	if( duplicate == 1 )
-		return;
+		return !duplicate;
 
 	mStack.push_back( node );
+
+	return !duplicate;
 
 }
 
@@ -42,7 +47,7 @@ const unsigned int Stack::lifo()
 	const unsigned int output = mStack[mStack.size() - 1];
 	mStack.pop_back();
 
-	mDone.push_back( output );
+	mHistory.push_back( output );
 
 	return output;
 }
@@ -57,12 +62,18 @@ void Stack::displayStack()
 	}
 }
 
-void Stack::displayDone()
+void Stack::displayHistory()
 {
-	std::cout << "Done Stack: " << std::endl;
+	std::cout << "History Stack: " << std::endl;
 
-	for( vector<int>::size_type i = 0; i < mDone.size(); i++ )
+	for( vector<int>::size_type i = 0; i < mHistory.size(); i++ )
 	{
-		std::cout << mDone[i] << std::endl;
+		std::cout << mHistory[i] << std::endl;
 	}
 }
+
+const unsigned int Stack::getHistory(int i )
+{
+	return mHistory[i];
+}
+

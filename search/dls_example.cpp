@@ -1,7 +1,7 @@
 #include "./graph_api/Graph.h"
 #include <iostream>
 
-void dls( Graph g, int root, int goal, int limit );
+void dls( Graph &g, int root, int goal, int limit );
 
 int main()
 {

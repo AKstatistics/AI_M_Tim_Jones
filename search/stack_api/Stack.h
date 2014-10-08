@@ -8,7 +8,7 @@ class Stack
 {
 	private:
 		vector<unsigned int> mStack;
-		vector<unsigned int> mDone;
+		vector<unsigned int> mHistory;
 	public:
 		Stack();
 		Stack( const unsigned int first );
@@ -20,6 +20,9 @@ class Stack
 		// and moves it to done
 		const unsigned int lifo();
 
+		// Returns the ith element in the Done stack
+		const unsigned int getHistory( int i );
+
 		// Prints the contents of the stack
 		void displayStack();
 		
@@ -27,7 +30,7 @@ class Stack
 		bool isEmpty(){ return mStack.empty(); }
 
 		// Prints the contents of the done stack
-		void displayDone();
+		void displayHistory();
 
 
 };
