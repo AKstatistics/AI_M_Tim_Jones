@@ -1,5 +1,6 @@
 #include "./graph_api/Graph.h"
 
+void dfs( Graph &g, int root, int goal );
 void ids( Graph &g, int root, int goal, int limit );
 
 int main()
@@ -8,7 +9,11 @@ int main()
 
 	Graph tree( 16 );
 
+	tree( L, P ) = 1;
 	tree( A, B ) = 1;
+	tree( D, P ) = 1;
+	tree( D, A ) = 1;
+	tree( H, P ) = 1;
 	tree( A, C ) = 1;
 	tree( A, D ) = 1;
 	tree( B, E ) = 1;
@@ -24,7 +29,9 @@ int main()
 	tree( M, O ) = 1;
 	tree( M, P ) = 1;
 
-	ids( tree, 0, O, 2 );
+	dfs( tree, 0, P );
+
+	ids( tree, 0, P, 2 );
 
 	return 0;
 }
