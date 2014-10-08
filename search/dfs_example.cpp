@@ -4,7 +4,7 @@
 using std::cout;
 using std::endl;
 
-void dfs( Graph g, int root, int goal );
+void dfs( Graph& g, int root, int goal );
 
 int main()
 {
@@ -20,7 +20,7 @@ int main()
 	tree( F, G ) = 1;
 	tree( F, H ) = 1;
 
-	dfs( tree, A, C );
+	dfs( tree, A, H );
 
 	return 0;
 }

@@ -32,6 +32,10 @@ class Stack
 		// Prints the contents of the done stack
 		void displayHistory();
 
+		int lenHistory() {return mHistory.size(); }
+
+		void reset() { mStack.clear(); mHistory.clear(); }
+
 
 };
 
