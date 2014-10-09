@@ -1,8 +1,4 @@
 #include "./graph_api/Graph.h"
-#include <iostream>
-
-using std::cout;
-using std::endl;
 
 void dfs( Graph& g, int root, int goal );
 

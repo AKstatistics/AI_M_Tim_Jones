@@ -1,38 +1,38 @@
-// NOTE: The Stack object will automatically not add nodes to the queue which are already queued or have been once dequeued (already searched).
+// NOTE: The Q object will automatically not add nodes to the queue which are already queued or have been once dequeued (already searched).
 
 #include "./graph_api/Graph.h"
-#include "./stack_api/Stack.h"
+#include "./queue_api/Q.h"
 #include <iostream>
-#include <vector>
+#include <deque>
 
-void dfs( Graph &g, int root, int goal )
+void bfs( Graph &g, int root, int goal )
 {
 	int node, to;
 	int depth = 0;
 	int i = 1;
 
-	Stack search( root );		// Stores the queue of 
-	std::vector<int> searchDepth;	// Stores the depth of the queued node.
+	Q search( root );		// Stores the queue of 
+	std::deque<int> searchDepth;	// Stores the depth of the queued node.
 	std::vector<int> path;		// Stores the path to the current node being search.
 	searchDepth.push_back(0);
 	path.push_back( root );
 
 	while( !search.isEmpty() )
 	{
-		node = search.lifo();	// Pop out the next node to search for the stack
+		node = search.fifo();	// Pop out the next node to search for the stack
 
-		if(searchDepth[searchDepth.size() - 1] > depth)	// If we have increased the depth the add the node to the path
+		if(searchDepth[0] > depth)	// If we have increased the depth the add the node to the path
 			path.push_back( node );
 
-		if(searchDepth[searchDepth.size() - 1] <= depth) // If we have remained at the same depth or decreased in depth (gone back up the graph) 
+		if(searchDepth[0] <= depth) // If we have remained at the same depth or decreased in depth (gone back up the graph) 
 		{
-			for( int i = 0; i <= depth - searchDepth[searchDepth.size() - 1]; i++ ) // Then for each level we went back up
+			for( int i = 0; i <= depth - searchDepth[0]; i++ ) // Then for each level we went back up
 				path.pop_back();	// Remove a node from the path we took
 			path.push_back( node );		// And add the current node to the stack
 		}
 		
-		depth = searchDepth[searchDepth.size() - 1];	// Now save the depth of the current node
-		searchDepth.pop_back();				// and remove that from the depth list.
+		depth = searchDepth[0];		// Now save the depth of the current node
+		searchDepth.pop_front();	// and remove that from the depth list.
 		
 		std::cout << i++ << ". Node: " << node << "  Depth: " << depth << std::endl;
 
